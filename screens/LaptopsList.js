@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { Button, ListItem } from "@rneui/base";
+import { Button, ListItem,FAB } from "@rneui/base";
 import { useState } from "react";
 import { getAllLaptos } from "../rest_client/laptops";
 
-export const LaptopsList = () => {
+export const LaptopsList = ({navigation}) => {
   const [laptopsList, setLaptopsList] = useState([]);
 
   const LaptopItem = ({ laptop }) => {
@@ -36,6 +36,12 @@ export const LaptopsList = () => {
           return <LaptopItem laptop={item} />;
         }}
       />
+      <FAB title="+"
+        onPress={()=>{
+          navigation.navigate("LaptopsFormNav");
+        }}
+      
+      />
     </View>
   );
 };
@@ -44,7 +50,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    flexDirection:"column",
+    alignItems: "stretch",
     justifyContent: "center",
   },
 });
