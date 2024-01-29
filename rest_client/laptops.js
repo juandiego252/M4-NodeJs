@@ -30,7 +30,7 @@ export const saveLaptopRest = (laptop, fnshowMessage) => {
   fetch(URL, config)
     .then((response) => response.json())
     .then((body) => {
-      fnshowMessage();
+      fnshowMessage("Laptop Gurdada");
       console.log(body);
     });
 };
@@ -53,7 +53,20 @@ export const updateLaptopRest = (laptop, fnshowMessage) => {
   fetch(URL+"/"+laptop.id, config)
     .then((response) => response.json())
     .then((body) => {
-      fnshowMessage();
+      fnshowMessage("Laptop Actualizada");
+      console.log(body);
+    });
+};
+
+export const deleteLaptopRest = (contact, fnshowMessage) => {
+  const config = {
+    method: "DELETE",
+  };
+
+  fetch(URL + "/" + contact.id, config)
+    .then((response) => response.json())
+    .then((body) => {
+      fnshowMessage("Laptop Eliminar");
       console.log(body);
     });
 };
